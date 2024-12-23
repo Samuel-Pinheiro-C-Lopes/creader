@@ -51,13 +51,13 @@
     void StrToInt(char* source, int* target);
 
     // Tries to parse a string source to a float target
-    int StrToFloat(char* source, float* target);
+    void StrToFloat(char* source, float* target);
     
     // Tries to parse a string source to a double target
-    int StrToDouble(char* source, float* target);
+    void StrToDouble(char* source, float* target);
 
     // Tries to parse a string source to a char target
-    int StrToChar(char* source, char* target);
+    void StrToChar(char* source, char* target);
     
 #pragma endregion
 

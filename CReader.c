@@ -65,6 +65,7 @@
             negativo = 1;
         }
 
+        // enquanto não encontrar o final da string
         while (source[0] != '\0')
         {
             *target *= 10;
@@ -72,6 +73,7 @@
             source += sizeof(char);
         }
         
+        // se o número representado pela string era negativo
         if (negativo)
             *target *= -1;
     }
@@ -80,39 +82,65 @@
     // Parameters: <source: string to be readed and parsed> and
     // <target: float target to be attributed based on the string source>
     // Returns: Success or error, if there were any
-    int StrToFloat(char *source, float* target)
+    void StrToFloat(char *source, float* target)
     {
-        int result;
+        // inicializa
+        *target = 0;
+        int negativo = 0;
 
-        // [...]
+        // se a string representar um inteiro negativo...
+        if (source[0] == '-')
+        {
+            *target = (source[1] - '0'); 
+            source += 2 * sizeof(char);
+            negativo = 1;
+        }
+
+        // enquanto não encontrar o final da string
+        while (source[0] != '\0' && source[0] != '.')
+        {
+            *target *= 10;
+            *target += (source[0] - '0');
+            source += sizeof(char);
+        }
         
-        return result;
+        if (source[0] == '.')
+        {
+            int div = 10;
+            source += sizeof(char);
+            while (source[0] != '\0')
+            {
+                *target += (float) (source[0] - '0')/div;
+                div *= 10;
+                source += sizeof(char);
+            }
+        }
+        
+        // se o número representado pela string era negativo
+        if (negativo)
+            *target *= -1;
     }
 
     // Summary: Tries to parse a string source to a double target
     // Parameters: <source: string to be readed and parsed> and 
     // <target: double target to be attributed based on the string source>
     // Returns: Success or error, if there were any
-    int StrToDouble(char *source, float *target)
+    void StrToDouble(char *source, float *target)
     {
         int result;
 
         // [...]
-        
-        return result;
     }
 
     // Summary: Tries to parse a string source to a char target
     // Parameters: <source: string to be readed and parsed> and
     // <target: char target to be attributed based on the string source>
     // Returns: Succes or error, if there were any
-    int StrToChar(char *source, char* target)
+    void StrToChar(char *source, char* target)
     {
         int result;
 
         *target = source[0];
-        
-        return result;
     }
 
 #pragma endregion
