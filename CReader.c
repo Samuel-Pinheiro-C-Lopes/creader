@@ -32,9 +32,21 @@
     int StrReader(char *target, int size)
     {
         int result;
-        
-        // [...]
-        
+        char input = getchar();
+
+        while (input != 10)
+        {
+            if (size > sizeof(char))
+            {
+                *target = input;
+                target += sizeof(char);
+                size -= sizeof(char);
+            }
+            input = getchar();
+        }
+
+        *target = '\0';
+               
         return result;
     }
 
