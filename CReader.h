@@ -45,10 +45,10 @@
 #pragma region AUXILIARY FUNCTIONS
 
     // Reads from input until size of string is reached or 'enter' key is pressed
-    int StrReader(char* target, int size);
+    void StrReader(char* target, int size);
     
     // Tries to parse a string source to an int target
-    int StrToInt(char* source, int* target);
+    void StrToInt(char* source, int* target);
 
     // Tries to parse a string source to a float target
     int StrToFloat(char* source, float* target);
