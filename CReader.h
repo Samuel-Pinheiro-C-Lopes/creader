@@ -54,7 +54,7 @@
     void StrToFloat(char* source, float* target);
     
     // Tries to parse a string source to a double target
-    void StrToDouble(char* source, float* target);
+    void StrToDouble(char* source, double* target);
 
     // Tries to parse a string source to a char target
     void StrToChar(char* source, char* target);

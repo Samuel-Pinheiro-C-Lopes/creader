@@ -69,7 +69,7 @@
         while (source[0] != '\0')
         {
             *target *= 10;
-            *target += (source[0] - '0');
+            *target += (int) (source[0] - '0');
             source += sizeof(char);
         }
         
@@ -100,7 +100,7 @@
         while (source[0] != '\0' && source[0] != '.')
         {
             *target *= 10;
-            *target += (source[0] - '0');
+            *target += (float) (source[0] - '0');
             source += sizeof(char);
         }
         
@@ -125,11 +125,43 @@
     // Parameters: <source: string to be readed and parsed> and 
     // <target: double target to be attributed based on the string source>
     // Returns: Success or error, if there were any
-    void StrToDouble(char *source, float *target)
+    void StrToDouble(char *source, double *target)
     {
-        int result;
+        // inicializa
+        *target = 0;
+        int negativo = 0;
 
-        // [...]
+        // se a string representar um inteiro negativo...
+        if (source[0] == '-')
+        {
+            *target = (source[1] - '0'); 
+            source += 2 * sizeof(char);
+            negativo = 1;
+        }
+
+        // enquanto não encontrar o final da string
+        while (source[0] != '\0' && source[0] != '.')
+        {
+            *target *= 10;
+            *target += (double) (source[0] - '0');
+            source += sizeof(char);
+        }
+        
+        if (source[0] == '.')
+        {
+            int div = 10;
+            source += sizeof(char);
+            while (source[0] != '\0')
+            {
+                *target += (double) (source[0] - '0')/div;
+                div *= 10;
+                source += sizeof(char);
+            }
+        }
+        
+        // se o número representado pela string era negativo
+        if (negativo)
+            *target *= -1;    
     }
 
     // Summary: Tries to parse a string source to a char target
