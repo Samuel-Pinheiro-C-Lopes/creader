@@ -55,17 +55,25 @@
                 case ('d'):
                 {
                     int* intTarget = (int*) target;
-                    char tempBuffer[20];
-                    StrReader(tempBuffer, 20);
+                    char tempBuffer[algs_int];
+                    StrReader(tempBuffer, algs_int);
                     StrToInt(tempBuffer, intTarget);
                     break;
                 }
                 case ('f'):
                 {
                     float* floatTarget = (float*) target;
-                    char tempBuffer[30];
-                    StrReader(tempBuffer, 30);
+                    char tempBuffer[algs_float];
+                    StrReader(tempBuffer, algs_float);
                     StrToFloat(tempBuffer, floatTarget);
+                    break;
+                }
+                case ('l'):
+                {
+                    double* doubleTarget = (double*) target;
+                    char tempBuffer[algs_double];
+                    StrReader(tempBuffer, algs_double);
+                    StrToDouble(tempBuffer, doubleTarget);
                     break;
                 }
                 case ('s'):
