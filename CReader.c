@@ -53,11 +53,11 @@
     // Returns: Success or error, if there were any
     void StrToInt(char* source, int* target)
     {
-        // inicializa
+        // initialization
         *target = 0;
         int negativo = 0;
 
-        // se a string representar um inteiro negativo...
+        // if the string starts with the negative number sign
         if (source[0] == '-')
         {
             *target = (source[1] - '0'); 
@@ -65,7 +65,7 @@
             negativo = 1;
         }
 
-        // enquanto não encontrar o final da string
+        // while the end of string isn't reached
         while (source[0] != '\0')
         {
             *target *= 10;
@@ -73,7 +73,7 @@
             source += sizeof(char);
         }
         
-        // se o número representado pela string era negativo
+        // if the string represents a negative number
         if (negativo)
             *target *= -1;
     }
@@ -84,11 +84,11 @@
     // Returns: Success or error, if there were any
     void StrToFloat(char *source, float* target)
     {
-        // inicializa
+        // initialization
         *target = 0;
         int negativo = 0;
 
-        // se a string representar um inteiro negativo...
+        // if the string starts with the negative number sign
         if (source[0] == '-')
         {
             *target = (source[1] - '0'); 
@@ -96,7 +96,7 @@
             negativo = 1;
         }
 
-        // enquanto não encontrar o final da string
+        // while the end of string isn't reached
         while (source[0] != '\0' && source[0] != '.')
         {
             *target *= 10;
@@ -104,6 +104,7 @@
             source += sizeof(char);
         }
         
+        // for the fractionary part of the number
         if (source[0] == '.')
         {
             int div = 10;
@@ -116,7 +117,7 @@
             }
         }
         
-        // se o número representado pela string era negativo
+        // if the string represents a negative number
         if (negativo)
             *target *= -1;
     }
@@ -127,11 +128,11 @@
     // Returns: Success or error, if there were any
     void StrToDouble(char *source, double *target)
     {
-        // inicializa
+        // initialization
         *target = 0;
         int negativo = 0;
 
-        // se a string representar um inteiro negativo...
+        // if the string starts with the negative number sign
         if (source[0] == '-')
         {
             *target = (source[1] - '0'); 
@@ -139,7 +140,7 @@
             negativo = 1;
         }
 
-        // enquanto não encontrar o final da string
+        // while the end of string isn't reached
         while (source[0] != '\0' && source[0] != '.')
         {
             *target *= 10;
@@ -147,6 +148,7 @@
             source += sizeof(char);
         }
         
+        // for the fractionary part of the number
         if (source[0] == '.')
         {
             int div = 10;
@@ -159,7 +161,7 @@
             }
         }
         
-        // se o número representado pela string era negativo
+        // if the string represents a negative number
         if (negativo)
             *target *= -1;    
     }
@@ -170,8 +172,6 @@
     // Returns: Succes or error, if there were any
     void StrToChar(char *source, char* target)
     {
-        int result;
-
         *target = source[0];
     }
 
