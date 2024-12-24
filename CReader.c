@@ -16,6 +16,50 @@
     // Returns: Success or error, if there's any
     int CRead(char* format, void* target)
     {
+        while (format[0] != '\0')
+        {
+            if (format[0] != '%')
+                goto next;
+
+            format += sizeof(char);
+            switch (format[0]) 
+            {
+                case ('c'): 
+                {
+                    char* charTarget = (char*) target;
+                    char tempBuffer[2];
+                    StrReader(tempBuffer, 2);
+                    StrToChar(tempBuffer, charTarget);
+                    break;
+                }
+                case ('d'):
+                {
+                    int* intTarget = (int*) target;
+                    char tempBuffer[20];
+                    StrReader(tempBuffer, 20);
+                    StrToInt(tempBuffer, intTarget);
+                    break;
+                }
+                case ('f'):
+                {
+                    float* floatTarget = (float*) target;
+                    char tempBuffer[30];
+                    StrReader(tempBuffer, 30);
+                    StrToFloat(tempBuffer, floatTarget);
+                    break;
+                }
+                case ('s'):
+                {
+                    char* strTarget = (char*) target;
+                    StrReader(strTarget, 10);
+                    break;
+                }
+            }
+
+            next:
+            format += sizeof(char);
+        }
+
        return 1;
     }
 
