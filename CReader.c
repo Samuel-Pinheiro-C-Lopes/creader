@@ -8,6 +8,14 @@
 
 ///////////////////////////////////
 
+#pragma region Definitions
+
+
+
+#pragma endregion
+
+///////////////////////////////////
+
 #pragma region FUNCTIONS
 
     // Summary: Receives a format and a address for the target variable
@@ -16,13 +24,25 @@
     // Returns: Success or error, if there's any
     int CRead(char* format, void* target)
     {
+        // using the max algarisms of each type to use as sentinel for the max size of 
+        // char* readed from the user
+        static unsigned int algs_int = 0; 
+        static unsigned int algs_float = 0;
+        static unsigned int algs_double = 0;
+        if (algs_int == 0)
+            algs_int = NumAlgs(INT_MAX);
+        if (algs_float == 0)
+            algs_float = NumAlgs(FLT_MAX);
+        if (algs_double == 0)
+            algs_double = NumAlgs(DBL_MAX);
+
+        // Reads the format to know which types of pointer to attribute
         while (format[0] != '\0')
         {
             if (format[0] != '%')
                 goto next;
 
-            format += sizeof(char);
-            switch (format[0]) 
+            switch (format[1]) 
             {
                 case ('c'): 
                 {
@@ -217,6 +237,21 @@
     void StrToChar(char *source, char* target)
     {
         *target = source[0];
+    }
+
+    // Summary: divides a value until it reaches 0 to know how many algarisms it has
+    // Parameters: <value: int value to be multiplied for 0.1 until it's value is 0>
+    // Returns: <int: number of algarisms the value has>
+    int NumAlgs(unsigned long long int value)
+    {
+        int result = 1;
+
+        while ((value /= 10) != 0)
+        {
+            result++;
+        }
+        
+        return result;
     }
 
 #pragma endregion

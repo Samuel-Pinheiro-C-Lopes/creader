@@ -4,6 +4,7 @@
 
     #include <stdio.h>
     #include <limits.h>
+    #include <float.h>
 
 #pragma endregion
 
@@ -58,6 +59,9 @@
 
     // Tries to parse a string source to a char target
     void StrToChar(char* source, char* target);
+
+    // Gets the number of algarisms of an integer value
+    int NumAlgs(unsigned long long int value);
     
 #pragma endregion
 
