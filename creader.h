@@ -5,6 +5,8 @@
     #include <stdio.h>
     #include <limits.h>
     #include <float.h>
+    #include <unistd.h>
+    #include <stdarg.h>
 
 #pragma endregion
 
@@ -37,7 +39,8 @@
 
     // Main function for this project, reads based on format provided to the target variable
     // in case of the format specifying a string, the maximum size is needed
-    int CRead(char* format, void* target);
+    int cread(char* format, void* target);
+ int _cread (char* format, ...);
 
 #pragma endregion
 
@@ -49,7 +52,7 @@
     void StrReader(char* target, int size);
     
     // Tries to parse a string source to an int target
-    void StrToInt(char* source, int* target);
+    void StrToInt(char* source, long long int* target);
 
     // Tries to parse a string source to a float target
     void StrToFloat(char* source, float* target);
@@ -61,7 +64,7 @@
     void StrToChar(char* source, char* target);
 
     // Gets the number of algarisms of an integer value
-    int NumAlgs(unsigned long long int value);
+    int NumAlgs(double value);
     
 #pragma endregion
 
