@@ -2,11 +2,16 @@
 
 #pragma region DEPENDENCIES
 
+    // basic
     #include <stdio.h>
+    // 
     #include <limits.h>
     #include <float.h>
     #include <unistd.h>
+    // variadic functions
     #include <stdarg.h>
+    // for fixed size integers
+    #include <stdint.h>
 
 #pragma endregion
 
@@ -39,8 +44,7 @@
 
     // Main function for this project, reads based on format provided to the target variable
     // in case of the format specifying a string, the maximum size is needed
-    int cread(char* format, void* target);
- int _cread (char* format, ...);
+    int cread(char* format, ...);
 
 #pragma endregion
 
@@ -49,22 +53,22 @@
 #pragma region AUXILIARY FUNCTIONS
 
     // Reads from input until size of string is reached or 'enter' key is pressed
-    void StrReader(char* target, int size);
+    //void StrReader(char* target, int size);
     
     // Tries to parse a string source to an int target
-    void StrToInt(char* source, long long int* target);
+    //void StrToInt(char* source, long long int* target);
 
     // Tries to parse a string source to a float target
-    void StrToFloat(char* source, float* target);
+    //void StrToFloat(char* source, long double* target);
     
     // Tries to parse a string source to a double target
-    void StrToDouble(char* source, double* target);
+    //void StrToDouble(char* source, double* target);
 
     // Tries to parse a string source to a char target
-    void StrToChar(char* source, char* target);
+    //void StrToChar(char* source, char* target);
 
     // Gets the number of algarisms of an integer value
-    int NumAlgs(double value);
+    //int NumAlgs(double value);
     
 #pragma endregion
 
